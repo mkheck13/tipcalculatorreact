@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 
-
 body {
   color: hsl(183, 100%, 15%);
   font-family: "Space Mono", monospace !important;
@@ -19,7 +18,6 @@ body {
 
 ::placeholder{
   text-align: end;
-
 }
 
 .custom::placeholder{

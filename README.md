@@ -2,7 +2,7 @@
 
 **Description:** With the provided assets remake the Tip Calculator in React.
 
-![Design preview for Tip Calculator]()
+![Design preview for Tip Calculator](./src/assets/TipCalculatorScreenshot.png)
 
 ***Here are the requirements that are needed:***
 - Made using React and Tailwind CSS
@@ -11,14 +11,14 @@
 
 **Developer:** Michael Heckerman
 
-**Date Revised:** 3/10/25
+**Date Revised:** 3/12/25
 
 
 ## Link(s):
 
 [Github-Repo](https://github.com/mkheck13/tipcalculatorreact)
 
-[Vercel]()
+[Vercel](https://tipcalculatorreact.vercel.app/)
 
 ## FeedBack/Peer Review: 
 
