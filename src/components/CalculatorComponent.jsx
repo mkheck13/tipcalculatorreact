@@ -23,13 +23,13 @@ const CalculatorComponent = () => {
         setBill(0);
         setPeople(0);
         setTip(0);
-        setSelectedButton(null);
+        setSelectedButton('');
         setTipPer(0);
         setTotalPer(0);
     };
 
   return (
-    <div className='my-4'>
+    <div className='flex min-h-screen flex-col items-center pt-10 md:p-24'>
             <img src={logo} alt='Splitter Logo' className='mx-auto' />
             <div className='bg-white w-screen md:w-7/12 h-1/3 shadow-sm shadow-grayCyan rounded-2xl md:mx-auto mt-20 md:flex px-5 py-4 md:p-2 max-md:text-sm'>
                 <div className='w-full md:w-1/2'>
@@ -43,9 +43,9 @@ const CalculatorComponent = () => {
                         </div>
                     </div>
 
-                    <div className='md:pl-10 py-6'>
-                        <p>Select Tip %</p>
-                        <div className='grid grid-cols-2 md:grid-cols-3 w-full md:w-96 gap-y-3 max-md:gap-x-4'>
+                    <div className='md:pl-10'>
+                        <p className="pt-10 pb-3">Select Tip %</p>
+                        <div className='grid grid-cols-2 md:grid-cols-3 gap-3 text-xl sm:text-lg'>
                             {[5, 10, 15, 25, 50].map((percentage, index) => (
                                 <button key={index} className={`${selectedButton === index ? 'bg-strongCyan text-veryDarkCyan' : 'bg-veryDarkCyan text-white'} text-2xl w-full md:w-28 h-12 rounded-lg font-semibold hover:bg-lightGrayCyan hover:text-veryDarkCyan`} onClick={() => {
                                     setSelectedButton(index);
@@ -54,7 +54,7 @@ const CalculatorComponent = () => {
                                     {percentage}%
                                 </button>
                             ))}
-                            <input className='text-2xl bg-lightGray w-11/12 md:w-28 h-12 rounded-lg font-semibold text-veryDarkCyan text-right pr-5 md:pr-3' type='text' placeholder='Custom' onClick={() => setSelectedButton(null)} onChange={(e) => setTip(parseFloat(e.target.value) / 100)} />
+                            <input className='text-2xl bg-lightGray w-11/12 md:w-28 h-12 rounded-lg font-semibold text-veryDarkCyan text-right pr-5 md:pr-3' type='text' placeholder='Custom' onClick={() => setSelectedButton('')} onChange={(e) => setTip(parseFloat(e.target.value) / 100)} />
                         </div>
                     </div>
 

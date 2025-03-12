@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   color: hsl(183, 100%, 15%);
   font-family: "Space Mono", monospace !important;
@@ -16,23 +15,8 @@ body {
   }
 }
 
-::placeholder{
-  text-align: end;
-}
-
-.custom::placeholder{
-  padding-left: 15px;
-  color: hsl(183, 100%, 15%);
-  opacity: 50%;
-}
-
 @media screen and (max-width: 400px) {
     .custom::placeholder{
       padding-right: 10px;
     }
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  margin: 0;
 }
