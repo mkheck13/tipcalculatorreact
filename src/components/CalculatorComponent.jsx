@@ -58,7 +58,7 @@ const CalculatorComponent = () => {
                             value={bill || ''} 
                             type='number' 
                             placeholder='0' 
-                            className='bg-lightGray h-12 rounded-xl text-xl text-right pr-5 w-full' 
+                            className={`bg-lightGray border-transparent h-12 rounded-xl text-xl text-right pr-5 w-full border-2 focus:border-strongCyan }`}
                             onChange={handleInputChange(setBill)} 
                             min={0} 
                             onKeyDown={(evt) => ['e', 'E', '+', '-'].includes(evt.key) && evt.preventDefault()} />
@@ -77,7 +77,7 @@ const CalculatorComponent = () => {
                                 </button>
                             ))}
                             <input 
-                            className="text-2xl bg-lightGray w-full min-w-[80px] h-12 rounded-lg font-semibold text-veryDarkCyan text-right pr-5 md:pr-3" 
+                            className={`text-2xl sm:text-lg bg-lightGray w-full min-w-[80px] h-12 rounded-lg font-semibold text-veryDarkCyan text-center px-3 md:pr-3 border-2 focus:border-strongCyan ${customTip ? 'border-strongCyan' : 'border-transparent'}`}
                             type='number' 
                             placeholder='Custom' 
                             value={customTip}
@@ -93,7 +93,7 @@ const CalculatorComponent = () => {
                     <div className='md:pl-10 pr-3 py-6'>
                         <div className='flex justify-between'>
                             <p className='text-darkGrayCyan'>Number of People</p>
-                            <p className='text-orange-500 pr-2'>{people === 0 && bill > 0 ? "Can't be zero" : ''}</p>
+                            <p className='text-red-500 pr-2'>{people === 0 && bill > 0 ? "Can't be zero" : ''}</p>
                         </div>
                         <div className='relative'>
                             <span className='absolute text-gray-400 text-2xl font-normal top-[14px] left-4'>
@@ -103,7 +103,7 @@ const CalculatorComponent = () => {
                             value={people || ''} 
                             type='number' 
                             placeholder='0' 
-                            className='bg-lightGray h-12 rounded-xl text-xl text-right pr-5 w-full' 
+                            className={`bg-lightGray h-12 rounded-xl text-xl text-right pr-5 w-full border-2 focus:border-strongCyan ${people === 0 ? 'border-red-500' : 'border-transparent'}`}
                             onChange={handleInputChange(setPeople)} 
                             min={1} 
                             onKeyDown={(evt) => ['e', 'E', '+', '-'].includes(evt.key) && evt.preventDefault()} />
