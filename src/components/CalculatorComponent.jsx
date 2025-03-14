@@ -11,13 +11,7 @@ const CalculatorComponent = () => {
     const [selectedButton, setSelectedButton] = useState(null);
     const [tipPer, setTipPer] = useState(0);
     const [totalPer, setTotalPer] = useState(0);
-
-    // useEffect(() => {
-    //     if (bill > 0 && people > 0 && tip > 0) {
-    //         setTipPer((bill * tip) / people);
-    //         setTotalPer((bill + bill * tip) / people);
-    //     }
-    // }, [tip, bill, people]);
+    const [customTip, setCustomTip] = useState('');
 
     useEffect(() => {
         if (bill > 0 && people > 0 && tip > 0) {
@@ -29,8 +23,9 @@ const CalculatorComponent = () => {
     }, [tip, bill, people]);
 
     const handleTipSelection = (percentage) => {
-        setTip(percentage / 100);
         setSelectedButton(percentage);
+        setTip(percentage / 100);
+        setCustomTip('');
     }
 
     const handleInputChange = (setter) => (e) => {
@@ -45,10 +40,11 @@ const CalculatorComponent = () => {
         setSelectedButton(null);
         setTipPer(0);
         setTotalPer(0);
+        setCustomTip('');
     };
 
   return (
-    <div className='flex min-h-screen flex-col items-center pt-10 md:p-24'>
+    <div className='flex min-h-screen flex-col items-center pt-5 md:p-10'>
             <img src={logo} alt='Splitter Logo' className='mx-auto' />
             <div className='flex flex-col lg:flex-row bg-white w-screen md:w-7/12 h-1/3 shadow-sm shadow-grayCyan rounded-2xl md:mx-auto mt-20 px-5 py-4 md:p-2 max-md:text-sm'>
                 <div className='w-full md:w-1/2'>
@@ -73,7 +69,8 @@ const CalculatorComponent = () => {
                         <p className="pt-10 pb-3">Select Tip %</p>
                         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4 text-xl sm:text-lg'>
                             {[5, 10, 15, 25, 50].map((percentage) => (
-                                <button key={percentage} 
+                                <button 
+                                key={percentage} 
                                 className={`${selectedButton === percentage ? 'bg-strongCyan text-veryDarkCyan' : 'bg-veryDarkCyan text-white'} text-2xl w-full min-w-[80px] h-12 rounded-lg font-semibold hover:bg-lightGrayCyan hover:text-veryDarkCyan`} 
                                 onClick={() => handleTipSelection(percentage)}>
                                     {percentage}%
@@ -83,9 +80,13 @@ const CalculatorComponent = () => {
                             className="text-2xl bg-lightGray w-full min-w-[80px] h-12 rounded-lg font-semibold text-veryDarkCyan text-right pr-5 md:pr-3" 
                             type='number' 
                             placeholder='Custom' 
-                            value={tip > 0 ? tip * 100 : ''}
+                            value={customTip}
                             onClick={() => setSelectedButton(null)} 
-                            onChange={(e) => setTip(e.target.value ? parseFloat(e.target.value) / 100 : 0)} />
+                            onChange={(e) => {
+                                const value = e.target.value;
+                                setCustomTip(value);
+                                setTip(value ? parseFloat(value) / 100 : 0)
+                            }} />
                         </div>
                     </div>
 
